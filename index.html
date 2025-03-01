@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.3/xlsx.full.min.js"></script>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sport Run</title>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700|Orbitron|Poppins&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>SPORT RUN</h1>
+    <button id="themeToggle">Alternar Modo</button>
+  </header>
+  <div class="container">
+    <section id="participant-section">
+      <h2>Participantes</h2>
+      <div class="flex">
+        <input type="file" id="fileInput" accept=".xlsx" onchange="loadParticipants(event)">
+        <button id="loadParticipantsButton">Carregar Lista</button>
+      </div>
+      <div class="flex">
+        <input type="text" id="searchInput" placeholder="Pesquisar participante...">
+        <button onclick="searchParticipant()">Pesquisar</button>
+      </div>
+      <table id="participantTable">
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>Kit</th>
+            <th>Numero</th>
+            <th>Tamanho Camiseta</th>
+            <th>Gênero</th>
+            <th>Tempo</th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+      <h3>Adicionar Participante</h3>
+      <div class="flex">
+        <input type="text" id="newName" placeholder="Nome">
+        <input type="text" id="newKit" placeholder="Kit (opcional)">
+        <input type="text" id="newNumber" placeholder="Número">
+        <input type="text" id="newTshirt" placeholder="Tamanho Camiseta (opcional)">
+      </div>
+      <div class="flex">
+        <select id="newGender">
+          <option value="Feminino">Feminino</option>
+          <option value="Masculino">Masculino</option>
+        </select>
+        <button onclick="addParticipant()">Adicionar</button>
+      </div>
+    </section>
+
+    <section id="stopwatch-section">
+      <h2>Cronômetro</h2>
+      <div class="stopwatch" id="display">00:00:00</div>
+      <bR>
+      </bR>
+      <div class="flex">
+        <button onclick="startStopwatch()">Iniciar</button>
+        <button onclick="stopStopwatch()">Parar</button>
+        <button onclick="resetStopwatch()">Resetar Cronômetro</button>
+      </div>
+      <h3>Registrar Tempo do Corredor</h3>
+      <div class="flex">
+        <input type="text" id="runnerNumber" placeholder="Número do corredor">
+        <button onclick="registerTime()">Registrar Tempo</button>
+      </div>
+    </section>
+
+    <section id="excel-section">
+      <button onclick="generateExcel()">Gerar Planilha Excel</button>
+    </section>
+    <section id="reset-section">
+      <button onclick="resetAll()">Resetar Página</button>
+    </section>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
